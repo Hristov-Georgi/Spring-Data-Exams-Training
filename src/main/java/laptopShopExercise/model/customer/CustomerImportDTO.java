@@ -1,4 +1,4 @@
-package laptopShopExercise.model;
+package laptopShopExercise.model.customer;
 
 import jakarta.validation.constraints.Email;
 import laptopShopExercise.model.town.TownNameDTO;

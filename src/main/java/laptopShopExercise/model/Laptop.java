@@ -1,11 +1,8 @@
 package laptopShopExercise.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Positive;
 import laptopShopExercise.model.shop.Shop;
-import org.hibernate.validator.constraints.Length;
+
 
 import java.math.BigDecimal;
 
@@ -18,28 +15,21 @@ public class Laptop {
     private long id;
 
     @Column(name = "mac_address", nullable = false)
-    @Length(min = 9)
-    private char macAddress;
+    private String macAddress;
 
     @Column(name = "cpu_speed", nullable = false)
     private float cpuSpeed;
 
     @Column(nullable = false)
-    @Min(8)
-    @Max(128)
-    private short ram;
+    private int ram;
 
     @Column(nullable = false)
-    @Min(128)
-    @Max(1024)
-    private short storage;
+    private int storage;
 
-    @Column(nullable = false)
-    @Length(min = 10)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
     @Column(nullable = false)
-    @Positive
     private BigDecimal price;
 
     @Column(nullable = false)
@@ -48,7 +38,10 @@ public class Laptop {
     @ManyToOne
     private Shop shop;
 
-    public Laptop(char macAddress, float cpuSpeed, short ram, short storage,
+    public Laptop() {
+    }
+
+    public Laptop(String macAddress, float cpuSpeed, int ram, int storage,
                   String description, BigDecimal price, WarrantyType warrantyType) {
         this.macAddress = macAddress;
         this.cpuSpeed = cpuSpeed;
@@ -67,11 +60,11 @@ public class Laptop {
         this.id = id;
     }
 
-    public char getMacAddress() {
+    public String getMacAddress() {
         return macAddress;
     }
 
-    public void setMacAddress(char macAddress) {
+    public void setMacAddress(String macAddress) {
         this.macAddress = macAddress;
     }
 
@@ -83,19 +76,19 @@ public class Laptop {
         this.cpuSpeed = cpuSpeed;
     }
 
-    public short getRam() {
+    public int getRam() {
         return ram;
     }
 
-    public void setRam(short ram) {
+    public void setRam(int ram) {
         this.ram = ram;
     }
 
-    public short getStorage() {
+    public int getStorage() {
         return storage;
     }
 
-    public void setStorage(short storage) {
+    public void setStorage(int storage) {
         this.storage = storage;
     }
 
@@ -129,5 +122,24 @@ public class Laptop {
 
     public void setShop(Shop shop) {
         this.shop = shop;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("""
+                Laptop - %s
+                *Cpu speed - %.2f
+                **Ram - %d
+                ***Storage - %d
+                ****Price - %.2f
+                #Shop name - %s
+                ##Town - %s""",
+                this.macAddress,
+                this.cpuSpeed,
+                this.ram,
+                this.storage,
+                this.price,
+                this.shop.getName(),
+                this.shop.getTown().getName());
     }
 }

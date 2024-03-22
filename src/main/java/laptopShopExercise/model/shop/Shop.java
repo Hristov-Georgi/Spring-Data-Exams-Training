@@ -1,10 +1,8 @@
 package laptopShopExercise.model.shop;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import laptopShopExercise.model.town.Town;
-import org.hibernate.validator.constraints.Length;
+
 
 import java.math.BigDecimal;
 

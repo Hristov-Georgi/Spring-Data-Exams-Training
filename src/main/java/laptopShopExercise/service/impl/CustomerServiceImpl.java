@@ -5,8 +5,8 @@ import com.google.gson.GsonBuilder;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
-import laptopShopExercise.model.Customer;
-import laptopShopExercise.model.CustomerImportDTO;
+import laptopShopExercise.model.customer.Customer;
+import laptopShopExercise.model.customer.CustomerImportDTO;
 import laptopShopExercise.model.town.Town;
 import laptopShopExercise.repository.CustomerRepository;
 import laptopShopExercise.repository.TownRepository;
@@ -15,7 +15,6 @@ import laptopShopExercise.util.LocalDateTypeAdapter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.ModelMap;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

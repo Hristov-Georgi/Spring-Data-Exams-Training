@@ -1,9 +1,8 @@
-package laptopShopExercise.model;
+package laptopShopExercise.model.customer;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import laptopShopExercise.model.town.Town;
-import org.hibernate.validator.constraints.Length;
+
 
 import java.time.LocalDate;
 
